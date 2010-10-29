@@ -1,0 +1,12 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  name: Berbati's Pan
+  address: 123 SE Burnside
+  notes: Often crowded on Saturday night
+ 
+two:
+  id: 2
+  name: 17 Nautical Miles
+  address: 4549 SE Division 

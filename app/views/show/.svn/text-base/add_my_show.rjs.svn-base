@@ -1,0 +1,4 @@
+#page.replace_html "my_shows_#{params[:id]}", ''
+page["my_shows_#{params[:id]}"].visual_effect :fade
+#page.replace_html "my_shows_#{params[:id]}", ''
+

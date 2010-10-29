@@ -1,0 +1,15 @@
+<fieldset>
+	<legend>Venue Details</legend>
+	<p>
+		<label for="name">Name:</label>
+		<%= @venue.name %>
+	</p>
+	<p>
+		<label for="address">Address:</label>
+		<%= @venue.address %>
+	</p>
+	<p>
+		<label for="start_time">Usual Start Time:</label>
+		<%= display_start_time(@venue.start_time) %>
+	</p>
+</fieldset>

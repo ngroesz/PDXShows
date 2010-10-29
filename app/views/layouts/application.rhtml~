@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xml:lang="en" lang="en">
+	
+<head>
+	<meta http-equiv="Content-type"
+		content="text/html; charset=utf-8" />
+	<title>PDX Shows</title>
+	<%= stylesheet_link_tag 'style' %>
+	<%= javascript_include_tag :defaults %>
+</head>
+
+<body>
+	<div id="wrapper">
+		<div id="heading">
+			<h1>PDX Shows</h1>
+			<div id="account">
+				<% if @current_user.nil? %>
+					<%= link_to 'Sign In', {:controller => 'account', :action => 'login'} %>
+				<% else %>
+					<%= link_to 'Sign Out', {:controller => 'account', :action => 'logout'} %>
+				<% end %>
+			</div>
+		</div> <!-- heading -->
+		<div id="main">
+			<div id="nav">
+				<ul>
+					<li>
+						<%= link_to 'Show List', {:controller => 'show', :action => 'list', :type => 'upcoming'}, {:class => 'nav'} %>
+					</li>
+					<li>
+						<%= link_to 'Venue List', {:controller => 'venue', :action => 'list'}, {:class => 'nav'} %>
+					</li>
+					<% unless @current_user.nil? %>
+						<li>
+							<%= link_to 'My Shows', {:controller => 'show', :action => 'list', :type => 'my_shows'}, {:class => 'nav'} %>
+						</li>
+						<li>
+							<%= link_to 'Add A Show', {:controller => 'show', :action => 'new'}, {:class => 'nav'} %>
+						</li>
+						<li>
+							<%= link_to 'Add A Venue', {:controller => 'venue', :action => 'new'}, {:class => 'nav'} %>
+						</li>
+					<% end %>
+				</ul>
+			</div>	<!-- nav -->
+			<div id="content">
+				<% unless flash[:notice].blank? %>
+					<div id="notification"><%= flash[:notice] %></div>
+				<% end %>
+				<% unless flash[:error].blank? %>
+					<div id="error"><%= flash[:error] %></div>
+				<% end %>
+				<%= yield %>
+			</div> <!-- content -->
+		</div> <!-- main -->
+		<div id="footer">
+			Contents Copyright 2008 - All Rights Reserved
+		</div>
+	</div> <!-- wrapper -->
+</body>
+</html>	

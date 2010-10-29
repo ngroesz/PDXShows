@@ -1,0 +1,28 @@
+<% form_for (:show) do |f| %>
+<fieldset>
+	<legend>Add Show</legend>
+	<%= error_messages_for 'show' %>
+	<p>
+		<label for="bands">Bands:<font class="required">*</font></label>
+		<%= f.text_field(:bands) %>
+	</p>
+	<p>
+		<label for="date">Date:</label>
+		<%= f.date_select(:date, :order => [:month, :day, :year], :start_year => @current_year) %>
+	</p>
+	<p>
+		<label for="venue">Venue:<font class="required">*</font></label>
+		<%= f.select(:venue_id, @venues, :prompt => '&lt;Pick A Venue&gt;') %>
+	</p>
+	<p> 
+		<label for="notes">Notes:</label>
+		<%= f.text_area(:notes, 'cols' => 40, 'rows' => 5) %>
+	</p>
+	<p class="submit">	
+		<%= submit_tag('Add Show') %>
+	</p>
+	<p>
+		<font class="required">*</font> denotes a required field
+	</p>
+</fieldset>
+<% end %>

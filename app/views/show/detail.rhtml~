@@ -1,0 +1,29 @@
+<%= link_to "<- Back To List", {:controller => 'show', :action => 'list', :type => 'upcoming'} %>
+
+<fieldset>
+	<legend>Show Details</legend>
+	<p>
+		<label for="bands">Bands:</label>
+		<%= @show.bands %>
+	</p>
+	<p>
+		<label for="venue">Venue:</label>
+		<%= link_to display_venue(@show.venue_id), {:controller => 'venue', :action => 'detail', :id => @show.venue_id}, {:alt => 'Venue Details'} %>
+	</p>
+	<p>
+		<label for="date">Date:</label>
+		<%= display_show_date(@show.date) %>
+	</p>
+	<% unless @show.notes.blank? %>
+		<p>
+			<label for="notes">Notes:</label>
+			<%= @show.notes %>
+		</p>
+	<% end %>
+	<% unless @current_user.nil? || @my_show %>
+		<p>
+			<label for="my_shows">My Shows:</label>
+			<%= link_to 'Add To My Shows', {:controller => 'show', :action => 'add_my_show', :id => @show.id, :from => 'detail'}, {:alt => 'Add To My Shows'} %>
+		</p>
+	<% end %>
+</fieldset>

@@ -1,0 +1,20 @@
+<% form_tag do %>
+	<fieldset>
+		<legend>Login</legend>
+		<%= error_messages_for 'account' %>
+		<p>
+			<label>E-mail:</label>
+			<%= text_field_tag 'email' %>
+		</p>
+		<p>
+			<label>Password:</label>
+			<%= password_field_tag 'password' %>
+		</p>
+		<p class="submit">
+			<%= submit_tag 'Login' %>
+		</p>
+		<p>
+			No account? <%= link_to 'Sign Up', {:action => 'signup'} %>
+		</p>
+	</fieldset>
+<% end %>

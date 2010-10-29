@@ -1,0 +1,9 @@
+<tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
+	<td>	
+		<%= link_to venue.name, {:action => 'detail', :id => venue.id, :from => 'venue_list' } %>
+	</td>
+	<td>
+		<%= venue.address %>
+	</td>
+</tr>
+

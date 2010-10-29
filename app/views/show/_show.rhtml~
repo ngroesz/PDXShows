@@ -1,0 +1,17 @@
+<tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
+	<td>	
+		<%= link_to show.bands, {:action => 'detail', :id => show.id}, {:title => 'Show Details'} %>
+	</td>
+	<td>
+		<%= link_to display_venue(show.venue_id), {:controller => 'venue', :action => 'detail', :id => show.venue_id}, {:title => 'Venue Details'} %>
+	</td>
+	<td>
+		<%= display_show_date(show.date) %>
+	</td>
+	<td>
+		<% if !@current_user.nil? && !params[:type].eql?('my_shows') && @my_shows[show.id].eql?('no') %>
+			<%= link_to "<img src=\"/images/checkmark.png\" alt=\"Add To My Shows\" title=\"Add To My Shows\">", {:controller => 'show', :action => 'add_my_show', :id => show.id, :from => 'show_list'}, {:alt => 'Add To My Shows'} %>
+		<% end %>
+	</td>
+</tr>
+

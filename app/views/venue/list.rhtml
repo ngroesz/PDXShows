@@ -1,0 +1,21 @@
+<div id="venue_div">
+	<div id="list_header">
+		<h1>Venues</h1>
+	</div>
+	<% if @venues.size.zero? %>
+		<em>No venues to list.</em>
+	<% else %>
+		<table id="venue_table">
+			<tr>
+				<th>
+					Name
+				</th>
+				<th>
+					Address
+				</th>
+			</tr>
+		<%= render :partial => 'venue',
+							 :collection => @venues %>
+	  </table>
+	<% end %>
+</div>

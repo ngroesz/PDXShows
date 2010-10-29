@@ -1,0 +1,33 @@
+<div id="show_div">
+	<div id="list_header">
+		<h2><%= @title %></h2>
+		<% if (@shows != nil && @shows.size > 0) %>
+			<% if (params[:type] == 'upcoming' || params[:type] == 'my_shows') %>
+				<div id="calendar_link">
+					<%= link_to 'Download As Calendar', {:controller => 'show', :action => 'generate_calendar', :type => params[:type]}, {:title => 'Download As Calendar'} %>
+				</div>
+			<% end %>
+		<% end %>
+	</div> <!-- list_header -->
+	<% if (@shows == nil || @shows.size.zero?) %>
+		<em>No shows to list.</em>
+	<% else %>
+		<table id="show_table">
+			<tr>
+				<th class="band_header">
+					Bands
+				</th>
+				<th>
+					Venue
+				</th>
+				<th>
+					Date
+				</th>
+				<th>
+				</th>
+			</tr>
+		<%= render :partial => 'show',
+				    :collection => @shows %>
+	  </table>
+	<% end %>
+</div> <!-- show_div -->
